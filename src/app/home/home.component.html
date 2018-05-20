@@ -1,0 +1,29 @@
+<div>
+	<p>Nombre del publicador:</p>
+	<input type="text" />
+</div>
+
+<div class="space-top">
+	<p>Nombre del libro:</p>
+	<input type="text" />
+</div>
+
+<div class="space-top">
+		<input type="button" value="hola" />
+</div>
+
+<p class="space-top">Total de resultados de la búsqueda:</p>
+
+<table class="table table-sm table-bordered table-striped space-top">
+    <tr>
+        <th>Código</th>
+        <th>Título del Libro</th>
+        <th>Año de Publicación</th>
+        <th>Publicador</th>
+    </tr>
+    <tr *ngFor="let item of getLibros()">
+        <td style="vertical-align:middle">{{item.numLibro}}</td>
+        <td style="vertical-align:middle">{{item.tituloLibro}}</td>
+        <td style="vertical-align:middle">{{item.publicador}}</td>
+    </tr>
+</table>
