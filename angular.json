@@ -23,7 +23,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -74,7 +75,15 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/html5-history-api/history.min.js",
+              "./node_modules/classlist.js/classList.min.js",
+              "./node_modules/core-js/client/shim.min.js",
+              "./node_modules/intl/dist/Intl.complete.js",
+              "./node_modules/zone.js/dist/zone.min.js",
+              "./node_modules/reflect-metadata/Reflect.js",
+              "./node_modules/systemjs/dist/system.src.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
