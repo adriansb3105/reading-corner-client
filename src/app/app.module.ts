@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +18,7 @@ import { LibroService } from './model/libro.service';
     HttpClientModule,
     BrowserModule,
     HttpModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [ LibroService ],

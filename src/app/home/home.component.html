@@ -1,20 +1,20 @@
-<div>
-	<p>Nombre del publicador:</p>
-	<input type="text" />
+<div class="form-group">
+    <label>Nombre del publicador</label>
+    <input class="form-control" [(ngModel)]="publicador"  />
+</div>
+
+<div class="form-group">
+    <label>Nombre del libro</label>
+    <input class="form-control" [(ngModel)]="libro"  />
 </div>
 
 <div class="space-top">
-	<p>Nombre del libro:</p>
-	<input type="text" />
-</div>
-
-<div class="space-top">
-		<input type="button" value="hola" />
+        <button class="btn btn-primary" (click)="getLibrosByTituloYPublicador()">Buscar Libros</button>
 </div>
 
 <p class="space-top">Total de resultados de la búsqueda:</p>
 
-<table class="table table-sm table-bordered table-striped space-top">
+<table class="table table-bordered table-striped">
     <tr>
         <th>Código</th>
         <th>Título del Libro</th>
@@ -24,6 +24,7 @@
     <tr *ngFor="let item of getLibros()">
         <td style="vertical-align:middle">{{item.numLibro}}</td>
         <td style="vertical-align:middle">{{item.tituloLibro}}</td>
-        <td style="vertical-align:middle">{{item.publicador}}</td>
+        <td style="vertical-align:middle">{{item.anoPublicacion}}</td>
+        <td style="vertical-align:middle">{{item.nombrePublicador}}</td>
     </tr>
 </table>
