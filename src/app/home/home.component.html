@@ -9,22 +9,30 @@
 </div>
 
 <div class="space-top">
-        <button class="btn btn-primary" (click)="getLibrosByTituloYPublicador()">Buscar Libros</button>
+    <button class="btn btn-primary" (click)="getLibrosByTituloYPublicador()">Buscar Libros</button>
 </div>
 
-<p class="space-top">Total de resultados de la búsqueda:</p>
 
-<table class="table table-bordered table-striped">
-    <tr>
-        <th>Código</th>
-        <th>Título del Libro</th>
-        <th>Año de Publicación</th>
-        <th>Publicador</th>
-    </tr>
-    <tr *ngFor="let item of getLibros()">
-        <td style="vertical-align:middle">{{item.numLibro}}</td>
-        <td style="vertical-align:middle">{{item.tituloLibro}}</td>
-        <td style="vertical-align:middle">{{item.anoPublicacion}}</td>
-        <td style="vertical-align:middle">{{item.nombrePublicador}}</td>
-    </tr>
-</table>
+<ng-container *ngIf="totalResultados===0; then mensajeVacio else muestraResultados"></ng-container>
+
+<ng-template #mensajeVacio >
+    <h4 class="space-top">No existen coincidencias para su búsqueda</h4>
+</ng-template>
+
+<ng-template #muestraResultados >
+    <p class="space-top">Total de resultados de la búsqueda: {{ totalResultados }} </p>
+     <table class="table table-bordered table-striped">
+        <tr>
+            <th>Código</th>
+            <th>Título del Libro</th>
+            <th>Año de Publicación</th>
+            <th>Publicador</th>
+        </tr>
+        <tr *ngFor="let item of getLibros()">
+            <td style="vertical-align:middle">{{item.numLibro}}</td>
+            <td style="vertical-align:middle">{{item.tituloLibro}}</td>
+            <td style="vertical-align:middle">{{item.anoPublicacion}}</td>
+            <td style="vertical-align:middle">{{item.nombrePublicador}}</td>
+        </tr>
+    </table>
+</ng-template>
