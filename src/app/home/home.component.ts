@@ -13,16 +13,31 @@ export class HomeComponent implements OnInit {
 	libro:string;
 	publicador:string
 	totalResultados:number
+	entradasVacias:boolean
 
   constructor(private libroService: LibroService) {
-		this.totalResultados = 0;
+		this.totalResultados = -1;
+		this.entradasVacias = false;
 	}
 
   ngOnInit() {
   }
 
 	getLibrosByTituloYPublicador():void{
-			this.libroService.findLibrosByTituloYPublicador(this.libro, this.publicador).subscribe(data => {this.libros = data; this.totalResultados = data.length});
+			if(this.isEmpty(this.libro) || this.isEmpty(this.publicador)){
+				this.entradasVacias = true;
+			}else{
+				this.libroService.findLibrosByTituloYPublicador(this.libro, this.publicador).subscribe(data => {this.libros = data; this.totalResultados = data.length});
+			}
+	}
+
+	isEmpty(prop): boolean{
+		return (
+			prop === null ||
+			prop === undefined ||
+			(prop.hasOwnProperty('length') && prop.length === 0) ||
+			(prop.constructor === Object && Object.keys(prop).length === 0)
+		);
 	}
 
 	getLibros(): Generic[] {

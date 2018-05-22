@@ -12,8 +12,13 @@
     <button class="btn btn-primary" (click)="getLibrosByTituloYPublicador()">Buscar Libros</button>
 </div>
 
+<ng-container *ngIf="entradasVacias; then camposFaltantes"></ng-container>
+<ng-container *ngIf="totalResultados===0; then mensajeVacio"></ng-container>
+<ng-container *ngIf="totalResultados>0; then muestraResultados"></ng-container>
 
-<ng-container *ngIf="totalResultados===0; then mensajeVacio else muestraResultados"></ng-container>
+<ng-template #camposFaltantes >
+    <h4 class="space-top">Debe ingresar todos los campos</h4>
+</ng-template>
 
 <ng-template #mensajeVacio >
     <h4 class="space-top">No existen coincidencias para su búsqueda</h4>
