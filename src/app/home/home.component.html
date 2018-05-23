@@ -1,6 +1,6 @@
 <div class="form-group">
     <label>Nombre del publicador</label>
-    <input class="form-control" [(ngModel)]="publicador"  />
+    <input class="form-control" [(ngModel)]="publicador" />
 </div>
 
 <div class="form-group">
@@ -33,11 +33,13 @@
             <th>Año de Publicación</th>
             <th>Publicador</th>
         </tr>
-        <tr *ngFor="let item of getLibros()">
+        <tr *ngFor="let item of getLibros() | paginate: { itemsPerPage:3, currentPage: p }">
             <td style="vertical-align:middle">{{item.numLibro}}</td>
             <td style="vertical-align:middle">{{item.tituloLibro}}</td>
             <td style="vertical-align:middle">{{item.anoPublicacion}}</td>
             <td style="vertical-align:middle">{{item.nombrePublicador}}</td>
         </tr>
     </table>
+
+    <pagination-controls (pageChange)="p =$event"></pagination-controls>
 </ng-template>

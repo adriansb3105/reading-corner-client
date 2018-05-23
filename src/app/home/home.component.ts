@@ -15,19 +15,27 @@ export class HomeComponent implements OnInit {
 	totalResultados:number
 	entradasVacias:boolean
 
-  constructor(private libroService: LibroService) {
+	constructor(private libroService: LibroService) {
 		this.totalResultados = -1;
 		this.entradasVacias = false;
+		this.libro = "";
+		this.publicador = "";
 	}
 
   ngOnInit() {
   }
 
 	getLibrosByTituloYPublicador():void{
-			if(this.isEmpty(this.libro) || this.isEmpty(this.publicador)){
+			if(this.isEmpty(this.libro) && this.isEmpty(this.publicador)){
 				this.entradasVacias = true;
+				this.totalResultados = -1;
 			}else{
-				this.libroService.findLibrosByTituloYPublicador(this.libro, this.publicador).subscribe(data => {this.libros = data; this.totalResultados = data.length});
+				this.entradasVacias = false;
+				this.libroService.findLibrosByTituloYPublicador(this.libro, this.publicador).subscribe(data => {
+					this.libros = data;
+					console.log(data);
+					this.totalResultados = data.length;
+				});
 			}
 	}
 
